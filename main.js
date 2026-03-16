@@ -7,9 +7,139 @@
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement)
 
+  const ZenEst = new ZenEsti();
   var videoElement;
   var solutionOptions;
   
+  class ZenEsti {
+        depth = 0;
+        estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
+  
+                let leftEye = landmarks[33];
+                leftEye={ x:leftEye.x*imageWidth, y:leftEye.y*imageHeight, z:leftEye.z*5};
+  
+                let rightEye = landmarks[263];
+                rightEye={ x:rightEye.x*imageWidth, y:rightEye.y*imageHeight, z:rightEye.z*5};
+                const dx = (leftEye.x - rightEye.x);
+                const dy = (leftEye.y - rightEye.y);
+                const pixelDistance = Math.sqrt(dx * dx + dy * dy);
+  
+                let focalLength = focalLengthFromFOV(fovDeg, imageWidth);
+  
+                focalLength = videoElement.videoHeight;//1080;//320;//272;//424;// (2.65-focal length/4-focal width)*640
+                const realIPD = 0.063; // meters
+  
+                const depthMeters = (focalLength * realIPD) / pixelDistance;
+                const cx = imageWidth / 2;
+                const cy = imageHeight / 2;
+        
+                const worldPoint = pixelToWorld(
+                rightEye.x,
+                rightEye.y,
+                depthMeters,
+                focalLength,
+                cx,
+                cy
+                );
+        
+                depth = depthMeters;
+                console.log("ZenEsti.estimateDepth", depth);
+        //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
+                return depthMeters;
+                };
+        pixelToWorld(inx, iny, Z, f, cx, cy) {
+                return {
+                        x: ((inx - cx) * Z) / f,
+                        y: ((iny - cy) * Z) / f,
+                        z: Z
+                };
+                }
+        FrustumProjection(eyepos)
+        {
+  
+  //        console.log("FrustumProjection tag00");
+  
+          const widthPx = window.innerWidth;//screen.width;              // CSS pixels
+          const heightPx = window.innerHeight;//screen.height;            // CSS pixels
+          const dpr = window.devicePixelRatio || 1; // pixels per CSS pixel
+  
+          const realWidthPx = widthPx * dpr;
+          const realHeightPx = heightPx * dpr;
+  
+  //        console.log("Real pixels:", realWidthPx, realHeightPx);
+  
+          const ppi = 460; // replace with your device's PPI
+          const widthInches = realWidthPx / ppi;
+          const heightInches = realHeightPx / ppi;
+  //        console.log("Real pixels:", realWidthPx, realHeightPx);
+//          console.log("FrustumProjection tag01");
+  
+          const widthMeters = widthInches * 0.0254;
+          const heightMeters = heightInches * 0.0254;
+//          console.log("Real meters:", widthMeters, heightMeters);
+  
+          const EyePos = new THREE.Vector3(eyepos.x,eyepos.y,eyepos.z);
+//          console.log("FrustumProjection tag02");
+          const LeftTop =new THREE.Vector3(-0.032,0.05,0);
+  //        const LeftTop =new THREE.Vector3(-1*widthMeters,heightMeters,0);
+          const RightBottom =new THREE.Vector3(0.032,-0.05,0);
+  //        const RightBottom =new THREE.Vector3(widthMeters,-1*heightMeters,0);
+//          console.log("FrustumProjection tag03");
+          const LeftTopCameraSpace = LeftTop.sub(EyePos);//LeftTop.clone().applyMatrix4(camera.matrixWorldInverse);
+  //        console.log("LeftTop:", LeftTopCameraSpace);
+//          console.log("FrustumProjection tag04");
+  
+          const RightBottomCameraSpace = RightBottom.sub(EyePos);//RightBottom.clone().applyMatrix4(camera.matrixWorldInverse);
+  //        console.log("RightBottom:", RightBottomCameraSpace);
+//          console.log("FrustumProjection tag040");
+          //camera.position.copy(EyePos);
+//          camera.lookAt(new THREE.Vector3(eyepos.x,eyepos.y,0));
+//          console.log("FrustumProjection tag041");
+          camera.projectionMatrix.makePerspective(LeftTopCameraSpace.x,
+            RightBottomCameraSpace.x,
+            RightBottomCameraSpace.y,
+            LeftTopCameraSpace.y,
+            -1*LeftTopCameraSpace.z,
+            100
+          ); 
+//          console.log("FrustumProjection tag042");
+          var m = PerspectiveOffCenter(LeftTopCameraSpace.x,
+            RightBottomCameraSpace.x,
+            RightBottomCameraSpace.y,
+            LeftTopCameraSpace.y,
+            -1*LeftTopCameraSpace.z,
+            100
+          ); 
+  
+//                  console.log("FrustumProjection tag05");
+  
+          return m;
+    };
+        PerspectiveOffCenter(left, right, bottom, top, near, far)
+        {
+//                  console.log("PerspectiveOffCenter tag00");
+  /*        var x = 2.0 * near / (right - left);
+          var y = 2.0 * near / (top - bottom);
+          var a = (right + left) / (right - left);
+          var b = (top + bottom) / (top - bottom);
+          var c = -(far + near) / (far - near);
+          var d = -(2.0 * far * near) / (far - near);
+          var e = -1.0;
+          */
+          var x = 2.0 * near / (right - left);
+          var y = -2.0 * near / (top - bottom);
+          var a = (right + left) / (right - left);
+          var b = -1*(top + bottom) / (top - bottom);
+          var c = -(far + near) / (far - near);
+          var d = -(2.0 * far * near) / (far - near);
+          var e = 1.0;
+         
+  //        var m = new SPLAT.Matrix4( x,0,a,0, 0,y,b,0, 0,0,c, d,0,0, e,0);
+          var m = new THREE.Matrix4( x,0,0,0, 0,y,0,0, a,b,c,e, 0,0,d,0);
+                  //        console.log("PerspectiveOffCenter tag01");
+          return m;
+        };               
+        }
   function initMediaPipe() {
       console.log("Script loaded V67");
   
@@ -130,7 +260,8 @@
               if (solutionOptions.refineLandmarks) {
 //        console.log("onResults Tag01",videoElement,videoElement.videoWidth,videoElement.videoHeight);
   //		        let landmarks =  results.landmarks[0];
-                let distanceZ = estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
+                let distanceZ=ZenEst.estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
+//                let distanceZ = estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
         //          console.log("Distance",distanceZ);
   //		console.log("onResults Tag011");
                 const cx = videoElement.videoWidth / 2;
@@ -140,7 +271,7 @@
                 rightEye={ x:rightEye.x*videoElement.videoWidth, y:rightEye.y*videoElement.videoHeight, z:rightEye.z};
   
   //		console.log("onResults Tag012");
-                const worldPoint = pixelToWorld(
+                const worldPoint = ZenEst.pixelToWorld(
                     rightEye.x,
                     rightEye.y,
                     distanceZ,
@@ -148,6 +279,14 @@
                     cx,
                     cy
                 );
+//                const worldPoint = pixelToWorld(
+//                    rightEye.x,
+//                    rightEye.y,
+//                    distanceZ,
+//                    focalLength,
+//                    cx,
+//                    cy
+//                );
   
                 const ppi = 460; // 
   //		console.log("onResults Tag013");
@@ -167,7 +306,7 @@
                 //  camera.position = new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
 //        console.log("onResults Tag014");
   //				camera.projectionMatrix = FrustumProjection(worldPoint);
-                let projectionMatrix = FrustumProjection(worldPoint);
+                let projectionMatrix = ZenEst.FrustumProjection(worldPoint);
               //    camera.projectionMat(projectionMatrix);
                   //camera.projectionMatrix.fromArray(
                   //    projectionMatrix.elements
