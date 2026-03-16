@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>gsplat.js - Viewer Demo</title>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4/face_mesh.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3/camera_utils.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+<style> body {margin: 0;} </style>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.178.0/three.module.js",
+      "@sparkjsdev/spark": "https://sparkjs.dev/releases/spark/0.1.10/spark.module.js"
+    }
+  }
+</script>
+        <video class="input_video"  style="display: none;" ></video>
+ <!--       <canvas id="canvas"></canvas>
+-->
+
+<div id="splat"
+     data-config='{
+       "scene": "model.ply",
+       "position": [0, 0, 0],
+       "scale": [1, 1, 1],
+       "rotation": [180, 0, 180],
+       "backgroundColor": "#000000"
+     }'>
+</div>
+<script>
+  const splatURL = "model.ply";
+</script>
+
+<script src="main.js" type="module"></script>
+    </body>
+
+
+
+</head>
+</html>
