@@ -9,7 +9,7 @@
 
   var videoElement;
   var solutionOptions;
-  
+  /*
   class ZenEsti {
         depth = 0;
         estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
@@ -117,14 +117,6 @@
         PerspectiveOffCenter(left, right, bottom, top, near, far)
         {
 //                  console.log("PerspectiveOffCenter tag00");
-  /*        var x = 2.0 * near / (right - left);
-          var y = 2.0 * near / (top - bottom);
-          var a = (right + left) / (right - left);
-          var b = (top + bottom) / (top - bottom);
-          var c = -(far + near) / (far - near);
-          var d = -(2.0 * far * near) / (far - near);
-          var e = -1.0;
-          */
           var x = 2.0 * near / (right - left);
           var y = -2.0 * near / (top - bottom);
           var a = (right + left) / (right - left);
@@ -139,7 +131,8 @@
           return m;
         };               
         }
- const ZenEst = new ZenEsti();
+        */
+// const ZenEst = new ZenEsti();
 
   function initMediaPipe() {
       console.log("Script loaded V67");
