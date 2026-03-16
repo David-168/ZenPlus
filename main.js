@@ -7,7 +7,6 @@
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement)
 
-  const ZenEst = new ZenEsti();
   var videoElement;
   var solutionOptions;
   
@@ -140,6 +139,8 @@
           return m;
         };               
         }
+ const ZenEst = new ZenEsti();
+
   function initMediaPipe() {
       console.log("Script loaded V67");
   
@@ -487,6 +488,7 @@
           return m;
         };
   
+
 
 initMediaPipe();
 
