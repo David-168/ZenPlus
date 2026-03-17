@@ -40,7 +40,7 @@
                 const cx = imageWidth / 2;
                 const cy = imageHeight / 2;
         
-                console.log("ZenEsti.estimateDepth tag4");
+                //console.log("ZenEsti.estimateDepth tag4");
                 const worldPoint = pixelToWorld(
                 rightEye.x,
                 rightEye.y,
@@ -50,9 +50,9 @@
                 cy
                 );
         
-                console.log("ZenEsti.estimateDepth tag5");
+                //console.log("ZenEsti.estimateDepth tag5");
                 this.depth = depthMeters;
-                console.log("ZenEsti.estimateDepth tag6");
+                //console.log("ZenEsti.estimateDepth tag6");
         //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
                 return depthMeters;
                 };
@@ -105,16 +105,16 @@
   //        console.log("RightBottom:", RightBottomCameraSpace);
 //          console.log("FrustumProjection tag040");
           //camera.position.copy(EyePos);
-                camera.lookAt(new THREE.Vector3(eyepos.x,eyepos.y,0));
+//                camera.lookAt(new THREE.Vector3(eyepos.x,eyepos.y,0));
 //          console.log("FrustumProjection tag041");
-                camera.projectionMatrix.makePerspective(LeftTopCameraSpace.x,
-                RightBottomCameraSpace.x,
-                LeftTopCameraSpace.y,
-                RightBottomCameraSpace.y,
-                -1*LeftTopCameraSpace.z,
-                100
-                ); 
-          console.log("FrustumProjection tag042");
+//                camera.projectionMatrix.makePerspective(LeftTopCameraSpace.x,
+//                RightBottomCameraSpace.x,
+//                LeftTopCameraSpace.y,
+//                RightBottomCameraSpace.y,
+//                -1*LeftTopCameraSpace.z,
+//                100
+//                ); 
+//          console.log("FrustumProjection tag042");
 
                 var projmat = new THREE.Matrix4().makePerspective(LeftTopCameraSpace.x,
                 RightBottomCameraSpace.x,
@@ -124,7 +124,7 @@
                 100
                 );
   
-                console.log("FrustumProjection tag05");//  };
+//                console.log("FrustumProjection tag05");//  };
   
                 return projmat;
         };
