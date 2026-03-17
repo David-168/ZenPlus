@@ -11,7 +11,6 @@
   var solutionOptions;
   
   class ZenEsti {
-        #depth = 0;
         constructor() {
                 console.log("ZenEsti.constructor");
         }
