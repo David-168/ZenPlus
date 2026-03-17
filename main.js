@@ -184,13 +184,15 @@
             100
           ); 
   
-//                  console.log("FrustumProjection tag05");
-//  return {
-//    left: LeftTopCameraSpace.x,right: RightBottomCameraSpace.x,
-//    top: LeftTopCameraSpace.y
+                  console.log("FrustumProjection tag05");
+  return {
+    left: LeftTopCameraSpace.x,right: RightBottomCameraSpace.x,
+    top: LeftTopCameraSpace.y,bottom: RightBottomCameraSpace.y,
+        near: -1*LeftTopCameraSpace.z,far: 100
+  };
 //  };
   
-                return m;
+//                return m;
         };
 
         PerspectiveOffCenter(left, right, bottom, top, near, far)
@@ -385,6 +387,9 @@
                   //camera.projectionMatrix.fromArray(
                   //    projectionMatrix.elements
                   //);
+                camera.projectionMatrix.makePerspective(
+                        ZenEst.getProspective(worldPoint));
+
         console.log("onResults Tag015");
   
               }
