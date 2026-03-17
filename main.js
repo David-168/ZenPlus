@@ -120,7 +120,7 @@
   
                 return m;
         };
-    /*
+    
         PerspectiveOffCenter(left, right, bottom, top, near, far)
         {
 //                  console.log("PerspectiveOffCenter tag00");
@@ -137,7 +137,7 @@
                   //        console.log("PerspectiveOffCenter tag01");
           return m;
         }; 
-        */              
+                     
         }
         
    const ZenEst = new ZenEsti();
