@@ -451,9 +451,25 @@
                         =ZenEst.getProspective(worldPoint);  
                 camera.projectionMatrix.makePerspective(
                         left, right, top, bottom, near, far);
+  let e = camera.projectionMatrix.elements;
+
+  console.log(`
+  ${e[0].toFixed(3)}  ${e[4].toFixed(3)}  ${e[8].toFixed(3)}  ${e[12].toFixed(3)}
+  ${e[1].toFixed(3)}  ${e[5].toFixed(3)}  ${e[9].toFixed(3)}  ${e[13].toFixed(3)}
+  ${e[2].toFixed(3)}  ${e[6].toFixed(3)}  ${e[10].toFixed(3)} ${e[14].toFixed(3)}
+  ${e[3].toFixed(3)}  ${e[7].toFixed(3)}  ${e[11].toFixed(3)} ${e[15].toFixed(3)}
+  `);
 
         console.log("onResults Tag015");                    
-  camera.projectionMatrix.copy(ZenEsti.getProjection(worldPoint));
+  camera.projectionMatrix.copy(ZenEst.getProjection(worldPoint));
+  e = camera.projectionMatrix.elements;
+
+  console.log(`
+  ${e[0].toFixed(3)}  ${e[4].toFixed(3)}  ${e[8].toFixed(3)}  ${e[12].toFixed(3)}
+  ${e[1].toFixed(3)}  ${e[5].toFixed(3)}  ${e[9].toFixed(3)}  ${e[13].toFixed(3)}
+  ${e[2].toFixed(3)}  ${e[6].toFixed(3)}  ${e[10].toFixed(3)} ${e[14].toFixed(3)}
+  ${e[3].toFixed(3)}  ${e[7].toFixed(3)}  ${e[11].toFixed(3)} ${e[15].toFixed(3)}
+  `);
         console.log("onResults Tag016");                    
               }
           }
