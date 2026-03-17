@@ -248,35 +248,12 @@
                 -1*LeftTopCameraSpace.z,
                 100
                 );
-          var m = PerspectiveOffCenter(LeftTopCameraSpace.x,
-            RightBottomCameraSpace.x,
-            RightBottomCameraSpace.y,
-            LeftTopCameraSpace.y,
-            -1*LeftTopCameraSpace.z,
-            100
-          ); 
   
-                  console.log("FrustumProjection tag05");//  };
+                console.log("FrustumProjection tag05");//  };
   
                 return projmat;
         };
 
-        PerspectiveOffCenter(left, right, bottom, top, near, far)
-        {
-//                  console.log("PerspectiveOffCenter tag00");
-          var x = 2.0 * near / (right - left);
-          var y = -2.0 * near / (top - bottom);
-          var a = (right + left) / (right - left);
-          var b = -1*(top + bottom) / (top - bottom);
-          var c = -(far + near) / (far - near);
-          var d = -(2.0 * far * near) / (far - near);
-          var e = 1.0;
-         
-          var m = new THREE.Matrix4( x,0,a,0, 0,y,b,0, 0,0,c, d,0,0, e,0);
-  //        var m = new THREE.Matrix4( x,0,0,0, 0,y,0,0, a,b,c,e, 0,0,d,0);
-        console.log("PerspectiveOffCenter in Class tag01");
-          return m;
-        }; 
                      
         }
         
