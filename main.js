@@ -453,7 +453,7 @@
                         left, right, top, bottom, near, far);
 
         console.log("onResults Tag015");                    
-  camera.projectionMatrix.copy(ZenEsti.getProjection());
+  camera.projectionMatrix.copy(ZenEsti.getProjection(worldPoint));
         console.log("onResults Tag016");                    
               }
           }
