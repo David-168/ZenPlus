@@ -11,6 +11,7 @@
   var solutionOptions;
   
   class ZenEsti {
+        depth = 1.0;
         constructor() {
                 console.log("ZenEsti.constructor");
         }
@@ -51,7 +52,7 @@
         
                 console.log("ZenEsti.estimateDepth tag5");
                 this.depth = depthMeters;
-                console.log("ZenEsti.estimateDepth", depth);
+                console.log("ZenEsti.estimateDepth tag6");
         //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
                 return depthMeters;
                 };
