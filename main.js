@@ -190,9 +190,66 @@
     top: LeftTopCameraSpace.y,bottom: RightBottomCameraSpace.y,
         near: -1*LeftTopCameraSpace.z,far: 100
   };
-//  };
+        getProjection(eyepos)
+        {
   
-//                return m;
+  //        console.log("FrustumProjection tag00");
+  
+                const widthPx = window.innerWidth;//screen.width;              // CSS pixels
+                const heightPx = window.innerHeight;//screen.height;            // CSS pixels
+                const dpr = window.devicePixelRatio || 1; // pixels per CSS pixel
+  
+                const realWidthPx = widthPx * dpr;
+                const realHeightPx = heightPx * dpr;
+  
+  //        console.log("Real pixels:", realWidthPx, realHeightPx);
+  
+                const ppi = 460; // replace with your device's PPI
+                const widthInches = realWidthPx / ppi;
+                const heightInches = realHeightPx / ppi;
+  //        console.log("Real pixels:", realWidthPx, realHeightPx);
+//          console.log("FrustumProjection tag01");
+  
+          const widthMeters = widthInches * 0.0254;
+          const heightMeters = heightInches * 0.0254;
+//          console.log("Real meters:", widthMeters, heightMeters);
+  
+                const EyePos = new THREE.Vector3(eyepos.x,eyepos.y,eyepos.z);
+//          console.log("FrustumProjection tag02");
+                const LeftTop =new THREE.Vector3(-0.032,0.05,0);
+  //        const LeftTop =new THREE.Vector3(-1*widthMeters,heightMeters,0);
+                const RightBottom =new THREE.Vector3(0.032,-0.05,0);
+  //        const RightBottom =new THREE.Vector3(widthMeters,-1*heightMeters,0);
+//          console.log("FrustumProjection tag03");
+                const LeftTopCameraSpace = LeftTop.sub(EyePos);//LeftTop.clone().applyMatrix4(camera.matrixWorldInverse);
+  //        console.log("LeftTop:", LeftTopCameraSpace);
+//          console.log("FrustumProjection tag04");
+  
+                const RightBottomCameraSpace = RightBottom.sub(EyePos);//RightBottom.clone().applyMatrix4(camera.matrixWorldInverse);
+  //        console.log("RightBottom:", RightBottomCameraSpace);
+//          console.log("FrustumProjection tag040");
+          //camera.position.copy(EyePos);
+                camera.lookAt(new THREE.Vector3(eyepos.x,eyepos.y,0));
+//          console.log("FrustumProjection tag041");
+                camera.projectionMatrix.makePerspective(LeftTopCameraSpace.x,
+                RightBottomCameraSpace.x,
+                LeftTopCameraSpace.y,
+                RightBottomCameraSpace.y,
+                -1*LeftTopCameraSpace.z,
+                100
+                ); 
+          console.log("FrustumProjection tag042");
+          var m = PerspectiveOffCenter(LeftTopCameraSpace.x,
+            RightBottomCameraSpace.x,
+            RightBottomCameraSpace.y,
+            LeftTopCameraSpace.y,
+            -1*LeftTopCameraSpace.z,
+            100
+          ); 
+  
+                  console.log("FrustumProjection tag05");//  };
+  
+                return m;
         };
 
         PerspectiveOffCenter(left, right, bottom, top, near, far)
@@ -394,8 +451,9 @@
                 camera.projectionMatrix.makePerspective(
                         left, right, top, bottom, near, far);
 
-        console.log("onResults Tag015");
-  
+        console.log("onResults Tag015");                    
+  camera.projectionMatrix.copy(ZenEsti.getProjection());
+        console.log("onResults Tag016");                    
               }
           }
       }
