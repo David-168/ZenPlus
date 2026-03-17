@@ -279,7 +279,7 @@
                 rightEye={ x:rightEye.x*videoElement.videoWidth, y:rightEye.y*videoElement.videoHeight, z:rightEye.z};
   
   		console.log("onResults Tag012");
-                const worldPoint = ZenEst.pixelToWorld(
+                let worldPoint = ZenEst.pixelToWorld(
                     rightEye.x,
                     rightEye.y,
                     distanceZ,
