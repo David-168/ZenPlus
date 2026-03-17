@@ -381,13 +381,16 @@
                 camera.position.copy(new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z));
                 //  camera.position = new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
         console.log("onResults Tag014");
+                camera.lookAt(new THREE.Vector3(worldPoint.x,worldPoint.y,0));
+
   //				camera.projectionMatrix = FrustumProjection(worldPoint);
                 let projectionMatrix = ZenEst.FrustumProjection(worldPoint);
               //    camera.projectionMat(projectionMatrix);
                   //camera.projectionMatrix.fromArray(
                   //    projectionMatrix.elements
                   //);
-                const { left, right, top, bottom, near, far }=ZenEst.getProspective(worldPoint);  
+                const { left, right, top, bottom, near, far }
+                        =ZenEst.getProspective(worldPoint);  
                 camera.projectionMatrix.makePerspective(
                         left, right, top, bottom, near, far);
 
