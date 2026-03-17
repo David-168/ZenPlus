@@ -12,6 +12,10 @@
   
   class ZenEsti {
         #depth = 0;
+        constructor() {
+                console.log("ZenEsti.constructor");
+        }
+
         estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
   
                 let leftEye = landmarks[33];
@@ -135,7 +139,7 @@
         */              
         }
         
-// const ZenEst = new ZenEsti();
+   const ZenEst = new ZenEsti();
 
   function initMediaPipe() {
       console.log("Script loaded V67");
