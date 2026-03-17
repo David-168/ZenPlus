@@ -9,9 +9,9 @@
 
   var videoElement;
   var solutionOptions;
-  /*
+  
   class ZenEsti {
-        depth = 0;
+/*        depth = 0;
         estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
   
                 let leftEye = landmarks[33];
@@ -129,9 +129,10 @@
           var m = new THREE.Matrix4( x,0,0,0, 0,y,0,0, a,b,c,e, 0,0,d,0);
                   //        console.log("PerspectiveOffCenter tag01");
           return m;
-        };               
+        }; 
+        */              
         }
-        */
+        
 // const ZenEst = new ZenEsti();
 
   function initMediaPipe() {
