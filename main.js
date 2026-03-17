@@ -309,7 +309,7 @@
   //				camera.position.x=worldPoint.x; 
   //				camera.position.y=worldPoint.y;
   //				camera.position.z=worldPoint.z; //z position is fixed.    
-                camera.position= [0, 0, 0];
+		console.log("onResults Tag0130");
                 camera.position.copy(new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z));
                 //  camera.position = new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
         console.log("onResults Tag014");
