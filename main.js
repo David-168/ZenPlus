@@ -46,7 +46,7 @@
         //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
                 return depthMeters;
                 };
-        /*
+        
         pixelToWorld(inx, iny, Z, f, cx, cy) {
                 return {
                         x: ((inx - cx) * Z) / f,
@@ -54,6 +54,7 @@
                         z: Z
                 };
                 }
+        /*
         FrustumProjection(eyepos)
         {
   
