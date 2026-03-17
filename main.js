@@ -17,10 +17,13 @@
         }
 
         estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
-  
+
+                console.log("ZenEsti.estimateDepth tag0");
+                
                 let leftEye = landmarks[33];
                 leftEye={ x:leftEye.x*imageWidth, y:leftEye.y*imageHeight, z:leftEye.z*5};
-  
+                  console.log("ZenEsti.estimateDepth tag1");
+
                 let rightEye = landmarks[263];
                 rightEye={ x:rightEye.x*imageWidth, y:rightEye.y*imageHeight, z:rightEye.z*5};
                 const dx = (leftEye.x - rightEye.x);
@@ -28,7 +31,8 @@
                 const pixelDistance = Math.sqrt(dx * dx + dy * dy);
   
                 let focalLength = focalLengthFromFOV(fovDeg, imageWidth);
-  
+                  console.log("ZenEsti.estimateDepth tag2");
+
                 focalLength = videoElement.videoHeight;//1080;//320;//272;//424;// (2.65-focal length/4-focal width)*640
                 const realIPD = 0.063; // meters
   
@@ -36,6 +40,7 @@
                 const cx = imageWidth / 2;
                 const cy = imageHeight / 2;
         
+                console.log("ZenEsti.estimateDepth tag4");
                 const worldPoint = pixelToWorld(
                 rightEye.x,
                 rightEye.y,
@@ -45,7 +50,8 @@
                 cy
                 );
         
-                depth = depthMeters;
+                console.log("ZenEsti.estimateDepth tag5");
+                this.depth = depthMeters;
                 console.log("ZenEsti.estimateDepth", depth);
         //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
                 return depthMeters;
