@@ -266,7 +266,7 @@
          
           var m = new THREE.Matrix4( x,0,a,0, 0,y,b,0, 0,0,c, d,0,0, e,0);
   //        var m = new THREE.Matrix4( x,0,0,0, 0,y,0,0, a,b,c,e, 0,0,d,0);
-                  //        console.log("PerspectiveOffCenter tag01");
+        console.log("PerspectiveOffCenter in Class tag01");
           return m;
         }; 
                      
@@ -639,9 +639,9 @@
           var d = -(2.0 * far * near) / (far - near);
           var e = 1.0;
          
-  //        var m = new SPLAT.Matrix4( x,0,a,0, 0,y,b,0, 0,0,c, d,0,0, e,0);
-          var m = new THREE.Matrix4( x,0,0,0, 0,y,0,0, a,b,c,e, 0,0,d,0);
-                  //        console.log("PerspectiveOffCenter tag01");
+          var m = new THREE.Matrix4( x,0,a,0, 0,y,b,0, 0,0,c, d,0,0, e,0);
+  //        var m = new THREE.Matrix4( x,0,0,0, 0,y,0,0, a,b,c,e, 0,0,d,0);
+        console.log("PerspectiveOffCenter outside tag01");
           return m;
         };
   
