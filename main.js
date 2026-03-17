@@ -60,7 +60,7 @@
         pixelToWorld(inx, iny, Z, f, cx, cy) {
                 return {
                         x: ((inx - cx) * Z) / f,
-                        y: ((iny - cy) * Z) / f,
+                        y: -1 * ((iny - cy) * Z) / f,
                         z: Z
                 };
                 }
