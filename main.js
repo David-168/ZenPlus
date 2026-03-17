@@ -241,7 +241,7 @@
                 ); 
           console.log("FrustumProjection tag042");
 
-                projmat = new THREE.Matrix4().makePerspective(LeftTopCameraSpace.x,
+                var projmat = new THREE.Matrix4().makePerspective(LeftTopCameraSpace.x,
                 RightBottomCameraSpace.x,
                 LeftTopCameraSpace.y,
                 RightBottomCameraSpace.y,
