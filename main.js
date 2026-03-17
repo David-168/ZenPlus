@@ -387,8 +387,9 @@
                   //camera.projectionMatrix.fromArray(
                   //    projectionMatrix.elements
                   //);
+                const { left, right, top, bottom, near, far }=ZenEst.getProspective(worldPoint);  
                 camera.projectionMatrix.makePerspective(
-                        ZenEst.getProspective(worldPoint));
+                        left, right, top, bottom, near, far);
 
         console.log("onResults Tag015");
   
