@@ -190,6 +190,7 @@
     top: LeftTopCameraSpace.y,bottom: RightBottomCameraSpace.y,
         near: -1*LeftTopCameraSpace.z,far: 100
   };
+        }
         getProjection(eyepos)
         {
   
