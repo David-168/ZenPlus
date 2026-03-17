@@ -423,39 +423,12 @@
 		console.log("onResults Tag0130");
                 camera.position.copy(new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z));
                 //  camera.position = new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
-        console.log("onResults Tag014");
+                console.log("onResults Tag014");
                 camera.lookAt(new THREE.Vector3(worldPoint.x,worldPoint.y,0));
 
-  //				camera.projectionMatrix = FrustumProjection(worldPoint);
-                let projectionMatrix = ZenEst.FrustumProjection(worldPoint);
-              //    camera.projectionMat(projectionMatrix);
-                  //camera.projectionMatrix.fromArray(
-                  //    projectionMatrix.elements
-                  //);
-                const { left, right, top, bottom, near, far }
-                        =ZenEst.getProspective(worldPoint);  
-                camera.projectionMatrix.makePerspective(
-                        left, right, top, bottom, near, far);
-  let e = camera.projectionMatrix.elements;
-
-  console.log(`
-  ${e[0].toFixed(3)}  ${e[4].toFixed(3)}  ${e[8].toFixed(3)}  ${e[12].toFixed(3)}
-  ${e[1].toFixed(3)}  ${e[5].toFixed(3)}  ${e[9].toFixed(3)}  ${e[13].toFixed(3)}
-  ${e[2].toFixed(3)}  ${e[6].toFixed(3)}  ${e[10].toFixed(3)} ${e[14].toFixed(3)}
-  ${e[3].toFixed(3)}  ${e[7].toFixed(3)}  ${e[11].toFixed(3)} ${e[15].toFixed(3)}
-  `);
-
-        console.log("onResults Tag015");                    
-  camera.projectionMatrix.copy(ZenEst.getProjection(worldPoint));
-  e = camera.projectionMatrix.elements;
-
-  console.log(`
-  ${e[0].toFixed(3)}  ${e[4].toFixed(3)}  ${e[8].toFixed(3)}  ${e[12].toFixed(3)}
-  ${e[1].toFixed(3)}  ${e[5].toFixed(3)}  ${e[9].toFixed(3)}  ${e[13].toFixed(3)}
-  ${e[2].toFixed(3)}  ${e[6].toFixed(3)}  ${e[10].toFixed(3)} ${e[14].toFixed(3)}
-  ${e[3].toFixed(3)}  ${e[7].toFixed(3)}  ${e[11].toFixed(3)} ${e[15].toFixed(3)}
-  `);
-        console.log("onResults Tag016");                    
+                console.log("onResults Tag015");                    
+                camera.projectionMatrix.copy(ZenEst.getProjection(worldPoint));
+                  
               }
           }
       }
