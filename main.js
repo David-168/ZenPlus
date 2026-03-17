@@ -240,6 +240,14 @@
                 100
                 ); 
           console.log("FrustumProjection tag042");
+
+                projmat = new THREE.Matrix4().makePerspective(LeftTopCameraSpace.x,
+                RightBottomCameraSpace.x,
+                LeftTopCameraSpace.y,
+                RightBottomCameraSpace.y,
+                -1*LeftTopCameraSpace.z,
+                100
+                );
           var m = PerspectiveOffCenter(LeftTopCameraSpace.x,
             RightBottomCameraSpace.x,
             RightBottomCameraSpace.y,
@@ -250,7 +258,7 @@
   
                   console.log("FrustumProjection tag05");//  };
   
-                return m;
+                return projmat;
         };
 
         PerspectiveOffCenter(left, right, bottom, top, near, far)
