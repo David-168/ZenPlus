@@ -11,7 +11,7 @@
   var solutionOptions;
   
   class ZenEsti {
-/*        depth = 0;
+        #depth = 0;
         estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
   
                 let leftEye = landmarks[33];
@@ -46,6 +46,7 @@
         //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
                 return depthMeters;
                 };
+        /*
         pixelToWorld(inx, iny, Z, f, cx, cy) {
                 return {
                         x: ((inx - cx) * Z) / f,
