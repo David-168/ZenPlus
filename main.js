@@ -308,7 +308,7 @@
           }
       }
   };
-  
+  /*
         function pixelToWorld(inx, iny, Z, f, cx, cy) {
             return {
                 x: ((inx - cx) * Z) / f,
@@ -456,14 +456,14 @@
         function PerspectiveOffCenter(left, right, bottom, top, near, far)
         {
 //                  console.log("PerspectiveOffCenter tag00");
-  /*        var x = 2.0 * near / (right - left);
+          var x = 2.0 * near / (right - left);
           var y = 2.0 * near / (top - bottom);
           var a = (right + left) / (right - left);
           var b = (top + bottom) / (top - bottom);
           var c = -(far + near) / (far - near);
           var d = -(2.0 * far * near) / (far - near);
           var e = -1.0;
-          */
+          
           var x = 2.0 * near / (right - left);
           var y = -2.0 * near / (top - bottom);
           var a = (right + left) / (right - left);
@@ -477,7 +477,7 @@
         console.log("PerspectiveOffCenter outside tag01");
           return m;
         };
-  
+*/  
 
 
 initMediaPipe();
