@@ -41,7 +41,7 @@
                 const cy = imageHeight / 2;
         
                 //console.log("ZenEsti.estimateDepth tag4");
-                const worldPoint = pixelToWorld(
+                const worldPoint = this.pixelToWorld(
                 rightEye.x,
                 rightEye.y,
                 depthMeters,
