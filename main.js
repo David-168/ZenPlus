@@ -30,10 +30,10 @@
                 const dy = (leftEye.y - rightEye.y);
                 const pixelDistance = Math.sqrt(dx * dx + dy * dy);
   
-                let focalLength = focalLengthFromFOV(fovDeg, imageWidth);
+                //let focalLength = focalLengthFromFOV(fovDeg, imageWidth);
                   console.log("ZenEsti.estimateDepth tag2");
 
-                focalLength = videoElement.videoHeight;//1080;//320;//272;//424;// (2.65-focal length/4-focal width)*640
+                let focalLength = videoElement.videoHeight;//1080;//320;//272;//424;// (2.65-focal length/4-focal width)*640
                 const realIPD = 0.063; // meters
   
                 const depthMeters = (focalLength * realIPD) / pixelDistance;
