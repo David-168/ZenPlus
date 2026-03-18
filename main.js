@@ -257,14 +257,14 @@
                 let distanceZ=ZenEst.estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
 //                let distanceZ = estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
         //          console.log("Distance",distanceZ);
-  		console.log("onResults Tag011");
+//  		console.log("onResults Tag011");
                 const cx = videoElement.videoWidth / 2;
                 const cy = videoElement.videoHeight / 2;
                 let rightEye = landmarks[33];//263];
                 const focalLength = videoElement.videoHeight;//1080;//460;//424;// (2.65-focal length/4-focal width)*640
                 rightEye={ x:rightEye.x*videoElement.videoWidth, y:rightEye.y*videoElement.videoHeight, z:rightEye.z};
   
-  		console.log("onResults Tag012");
+//  		console.log("onResults Tag012");
                 let worldPoint = ZenEst.pixelToWorld(
                     rightEye.x,
                     rightEye.y,
@@ -283,7 +283,7 @@
 //                );
   
                 const ppi = 460; // 
-		console.log("onResults Tag013");
+//		console.log("onResults Tag013");
                 worldPoint.x=worldPoint.x;
                 worldPoint.y=worldPoint.y
                 +(window.innerHeight*window.devicePixelRatio/ppi)*0.0254
@@ -295,13 +295,13 @@
   //				camera.position.x=worldPoint.x; 
   //				camera.position.y=worldPoint.y;
   //				camera.position.z=worldPoint.z; //z position is fixed.    
-		console.log("onResults Tag0130");
+//		console.log("onResults Tag0130");
                 camera.position.copy(new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z));
                 //  camera.position = new THREE.Vector3(worldPoint.x, worldPoint.y, worldPoint.z);
-                console.log("onResults Tag014");
+//                console.log("onResults Tag014");
                 camera.lookAt(new THREE.Vector3(worldPoint.x,worldPoint.y,0));
 
-                console.log("onResults Tag015");                    
+//                console.log("onResults Tag015");                    
                 camera.projectionMatrix.copy(ZenEst.getProjection(worldPoint));
                   
               }
