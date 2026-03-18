@@ -284,7 +284,7 @@
 //		console.log("onResults Tag013");
                 worldPoint.x=worldPoint.x;
                 worldPoint.y=worldPoint.y
-                +(window.innerHeight*window.devicePixelRatio/ppi)*0.0254
+                +((window.innerHeight*window.devicePixelRatio/ppi)*0.0254)/2
                 ;//-((heightInches)/2);
   //				console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
   
