@@ -356,7 +356,7 @@ const canvas = document.querySelector('canvas');
 const gl = canvas.getContext('webgl') || canvas.getContext('webgl2');
 const ppi = 460; // replace with your device's PPI
 console.log("Window inner Height: ",window.innerHeight);
-console.log("Window Height: ",window.innerHeight*window.devicePixelRatio/ppi)*0.0254);
+console.log("Window Height: ",(window.innerHeight*window.devicePixelRatio/ppi)*0.0254);
 console.log("Window Ratio: ",vicePixelRatio);
 console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
 
