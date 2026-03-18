@@ -333,6 +333,8 @@ console.log(splatconfig.backgroundColor);    // "#000000"
 
   // convert to quaternion
   const quaternion = new THREE.Quaternion();
+
+  
   quaternion.setFromEuler(euler);
 
 
@@ -350,6 +352,11 @@ console.log(splatconfig.backgroundColor);    // "#000000"
 //    splatconfig.rotation[1] * Math.PI/180,
 //    splatconfig.rotation[2] * Math.PI/180
 //  ));
+const canvas = document.querySelector('canvas');
+const gl = canvas.getContext('webgl') || canvas.getContext('webgl2');
+
+console.log("GL Width/Height: gl.drawingBufferWidth, gl.drawingBufferHeight);
+
   scene.add(butterfly);
   renderer.setClearColor(splatconfig.backgroundColor, 1)
   butterfly.scale.set(splatconfig.scale[0], splatconfig.scale[1], splatconfig.scale[2]);
