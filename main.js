@@ -355,7 +355,7 @@ console.log(splatconfig.backgroundColor);    // "#000000"
 const canvas = document.querySelector('canvas');
 const gl = canvas.getContext('webgl') || canvas.getContext('webgl2');
 
-console.log("GL Width/Height: gl.drawingBufferWidth, gl.drawingBufferHeight);
+console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
 
   scene.add(butterfly);
   renderer.setClearColor(splatconfig.backgroundColor, 1)
