@@ -18,11 +18,11 @@
 
         estimateDepth(landmarks, imageWidth, imageHeight,fovDeg) {
 
-                console.log("ZenEsti.estimateDepth tag0");
+//                console.log("ZenEsti.estimateDepth tag0");
                 
                 let leftEye = landmarks[33];
                 leftEye={ x:leftEye.x*imageWidth, y:leftEye.y*imageHeight, z:leftEye.z*5};
-                  console.log("ZenEsti.estimateDepth tag1");
+//                  console.log("ZenEsti.estimateDepth tag1");
 
                 let rightEye = landmarks[263];
                 rightEye={ x:rightEye.x*imageWidth, y:rightEye.y*imageHeight, z:rightEye.z*5};
@@ -31,7 +31,7 @@
                 const pixelDistance = Math.sqrt(dx * dx + dy * dy);
   
                 //let focalLength = focalLengthFromFOV(fovDeg, imageWidth);
-                  console.log("ZenEsti.estimateDepth tag2");
+//                  console.log("ZenEsti.estimateDepth tag2");
 
                 let focalLength = videoElement.videoHeight;//1080;//320;//272;//424;// (2.65-focal length/4-focal width)*640
                 const realIPD = 0.063; // meters
@@ -227,9 +227,7 @@
   
           const cameraMediaPipe = new window.Camera(videoElement, {
           onFrame: async () => {
-            console.log("onFrame Tag0");
               await faceMesh.send({ image: videoElement });
-            console.log("onFrame Tag1");
               },
               width: 640,
               height: 480
@@ -252,7 +250,7 @@
       if (results.multiFaceLandmarks) {
           for (const landmarks of results.multiFaceLandmarks) {
               if (solutionOptions.refineLandmarks) {
-        console.log("onResults Tag01",videoElement,videoElement.videoWidth,videoElement.videoHeight);
+//        console.log("onResults Tag01",videoElement,videoElement.videoWidth,videoElement.videoHeight);
   //		        let landmarks =  results.landmarks[0];
                 let distanceZ=ZenEst.estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
 //                let distanceZ = estimateDepth(landmarks,videoElement.videoWidth,videoElement.videoHeight,76);
@@ -357,7 +355,7 @@ const gl = canvas.getContext('webgl') || canvas.getContext('webgl2');
 const ppi = 460; // replace with your device's PPI
 console.log("Window inner Height: ",window.innerHeight);
 console.log("Window Height: ",(window.innerHeight*window.devicePixelRatio/ppi)*0.0254);
-console.log("Window Ratio: ",vicePixelRatio);
+console.log("Window Ratio: ",window.devicePixelRatio);
 console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
 
   scene.add(butterfly);
