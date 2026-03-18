@@ -363,5 +363,7 @@ console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
   butterfly.scale.set(splatconfig.scale[0], splatconfig.scale[1], splatconfig.scale[2]);
   renderer.setAnimationLoop(function animate(time) {
     renderer.render(scene, camera);
+console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
+
 //    butterfly.rotation.y += 0.01;
   });
