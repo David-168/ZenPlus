@@ -351,7 +351,7 @@ console.log(splatconfig.backgroundColor);    // "#000000"
 //    splatconfig.rotation[2] * Math.PI/180
 //  ));
   scene.add(butterfly);
-  renderer.setClearColor(0x000000, 1)
+  renderer.setClearColor(splatconfig.backgroundColor, 1)
   butterfly.scale.set(splatconfig.scale[0], splatconfig.scale[1], splatconfig.scale[2]);
   renderer.setAnimationLoop(function animate(time) {
     renderer.render(scene, camera);
