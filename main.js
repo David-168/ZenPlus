@@ -297,7 +297,7 @@ console.log(splatconfig.rotation);                // 60
 console.log(splatconfig.backgroundColor);    // "#000000"
 
 //  const splatURL = "https://sparkjs.dev/assets/splats/butterfly.spz";
-  const butterfly = new SplatMesh({ url: splatconfig.scene });
+//////  const butterfly = new SplatMesh({ url: splatconfig.scene });
   // create Euler rotation
 
   function setupConfig(smesh,sconfig) {
@@ -351,10 +351,10 @@ console.log("Canvas Width/Height: ", canvas.width, canvas.height);
   const viewport = gl.getParameter(gl.VIEWPORT);
   console.log('Viewport:', viewport); // [x, y, width, height]
 
-  setupConfig(butterfly,splatconfig);
-/*
+///////  setupConfig(butterfly,splatconfig);
+
   const loader = new SplatLoader();
-loader.loadAsync(url, (event) => {
+loader.loadAsync(splatconfig.scene , (event) => {
   if (event.type === "progress") {
     const progress = event.lengthComputable
       ? `${((event.loaded / event.total) * 100).toFixed(2)}%`
@@ -365,13 +365,13 @@ loader.loadAsync(url, (event) => {
 .then((packedSplats) => {
   const splatMesh = new SplatMesh({ packedSplats });
   // Re-orient from OpenCV to OpenGL coordinates
-  splatMesh.quaternion.set(1, 0, 0, 0);
-  splatMesh.position.set(0, 0, -1);
-  splatMesh.scale.setScalar(0.5);
-  scene.add(splatMesh);
+  //splatMesh.quaternion.set(1, 0, 0, 0);
+  //splatMesh.position.set(0, 0, -1);
+  //splatMesh.scale.setScalar(0.5);
+  //scene.add(splatMesh);
+  setupConfig(splatMesh,splatconfig);
 })
 .catch((error) => {
   console.warn(error);
 });
 
-*/
