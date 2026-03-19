@@ -39,18 +39,7 @@
                 const depthMeters = (focalLength * realIPD) / pixelDistance;
                 const cx = imageWidth / 2;
                 const cy = imageHeight / 2;
-        
-                //console.log("ZenEsti.estimateDepth tag4");
-                const worldPoint = this.pixelToWorld(
-                rightEye.x,
-                rightEye.y,
-                depthMeters,
-                focalLength,
-                cx,
-                cy
-                );
-        
-                //console.log("ZenEsti.estimateDepth tag5");
+
                 this.depth = depthMeters;
                 //console.log("ZenEsti.estimateDepth tag6");
         //        console.log("LeftEye Meters:",worldPoint.x,",",worldPoint.y,",",worldPoint.z);
@@ -102,19 +91,6 @@
 //          console.log("FrustumProjection tag04");
   
                 const RightBottomCameraSpace = RightBottom.sub(EyePos);//RightBottom.clone().applyMatrix4(camera.matrixWorldInverse);
-  //        console.log("RightBottom:", RightBottomCameraSpace);
-//          console.log("FrustumProjection tag040");
-          //camera.position.copy(EyePos);
-//                camera.lookAt(new THREE.Vector3(eyepos.x,eyepos.y,0));
-//          console.log("FrustumProjection tag041");
-//                camera.projectionMatrix.makePerspective(LeftTopCameraSpace.x,
-//                RightBottomCameraSpace.x,
-//                LeftTopCameraSpace.y,
-//                RightBottomCameraSpace.y,
-//                -1*LeftTopCameraSpace.z,
-//                100
-//                ); 
-//          console.log("FrustumProjection tag042");
 
                 var projmat = new THREE.Matrix4().makePerspective(LeftTopCameraSpace.x,
                 RightBottomCameraSpace.x,
