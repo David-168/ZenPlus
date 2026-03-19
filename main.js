@@ -321,7 +321,18 @@ console.log(splatconfig.backgroundColor);    // "#000000"
   smesh.quaternion.set(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
   smesh.position.set(sconfig.position[0],
      sconfig.position[1], sconfig.position[2]);
-    smesh.scale.set(splatconfig.scale[0], splatconfig.scale[1], splatconfig.scale[2]);
+    smesh.scale.set(sconfig.scale[0], sconfig.scale[1], sconfig.scale[2]);
+
+  scene.add(smesh);
+  renderer.setClearColor(sconfig.backgroundColor, 1);
+  renderer.setAnimationLoop(function animate(time) {
+    renderer.render(scene, camera);
+//console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
+
+//    butterfly.rotation.y += 0.01;
+  });
+
+
 
   };
  // butterfly.rotation.set((
@@ -341,14 +352,6 @@ console.log("Canvas Width/Height: ", canvas.width, canvas.height);
   console.log('Viewport:', viewport); // [x, y, width, height]
 
   setupConfig(butterfly,splatconfig);
-  scene.add(butterfly);
-  renderer.setClearColor(splatconfig.backgroundColor, 1);
-  renderer.setAnimationLoop(function animate(time) {
-    renderer.render(scene, camera);
-console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
-
-//    butterfly.rotation.y += 0.01;
-  });
 /*
   const loader = new SplatLoader();
 loader.loadAsync(url, (event) => {
