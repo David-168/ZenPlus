@@ -351,6 +351,11 @@ console.log("Canvas Width/Height: ", canvas.width, canvas.height);
   const viewport = gl.getParameter(gl.VIEWPORT);
   console.log('Viewport:', viewport); // [x, y, width, height]
 
+    // Progress bar elements
+  const bar = document.getElementById('progress-bar');
+  const text = document.getElementById('progress-text');
+
+
 ///////  setupConfig(butterfly,splatconfig);
 
   const loader = new SplatLoader();
@@ -360,6 +365,10 @@ loader.loadAsync(splatconfig.scene , (event) => {
       ? `${((event.loaded / event.total) * 100).toFixed(2)}%`
       : `${event.loaded} bytes`;
     console.log(`Background download progress: ${progress}`);
+      const percent = (event.loaded  / event.total) * 100;
+                bar.style.width = percent + '%';
+      text.textContent = Math.floor(percent) + '%';
+
   }
 })
 .then((packedSplats) => {
