@@ -1,5 +1,5 @@
   import * as THREE from "three";
-  import { SplatMesh } from "@sparkjsdev/spark";
+  import { SplatMesh, SplatLoader} from "@sparkjsdev/spark";
 
   const scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
