@@ -299,12 +299,12 @@ console.log(splatconfig.backgroundColor);    // "#000000"
 //  const splatURL = "https://sparkjs.dev/assets/splats/butterfly.spz";
   const butterfly = new SplatMesh({ url: splatconfig.scene });
   // create Euler rotation
-  const euler = new THREE.Euler(        
-    splatconfig.rotation[0] * Math.PI/180,
-    splatconfig.rotation[1] * Math.PI/180,
-    splatconfig.rotation[2] * Math.PI/180
-  );
 
+  function setupConfig(smesh,sconfig) {
+  const euler = new THREE.Euler(        
+    sconfig.rotation[0] * Math.PI/180,
+    sconfig.rotation[1] * Math.PI/180,
+    sconfig.rotation[2] * Math.PI/180);
   // convert to quaternion
   const quaternion = new THREE.Quaternion();
 
@@ -312,15 +312,18 @@ console.log(splatconfig.backgroundColor);    // "#000000"
   quaternion.setFromEuler(euler);
 
 
-    butterfly.rotation.set((
-    splatconfig.rotation[0] * Math.PI/180,
-    splatconfig.rotation[1] * Math.PI/180,
-    splatconfig.rotation[2] * Math.PI/180
+    smesh.rotation.set((
+    sconfig.rotation[0] * Math.PI/180,
+    sconfig.rotation[1] * Math.PI/180,
+    sconfig.rotation[2] * Math.PI/180
   ));
 
-  butterfly.quaternion.set(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
-  butterfly.position.set(splatconfig.position[0],
-     splatconfig.position[1], splatconfig.position[2]);
+  smesh.quaternion.set(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
+  smesh.position.set(sconfig.position[0],
+     sconfig.position[1], sconfig.position[2]);
+    smesh.scale.set(splatconfig.scale[0], splatconfig.scale[1], splatconfig.scale[2]);
+
+  };
  // butterfly.rotation.set((
 //    splatconfig.rotation[0] * Math.PI/180,
 //    splatconfig.rotation[1] * Math.PI/180,
@@ -337,12 +340,35 @@ console.log("Canvas Width/Height: ", canvas.width, canvas.height);
   const viewport = gl.getParameter(gl.VIEWPORT);
   console.log('Viewport:', viewport); // [x, y, width, height]
 
+  setupConfig(butterfly,splatconfig);
   scene.add(butterfly);
-  renderer.setClearColor(splatconfig.backgroundColor, 1)
-  butterfly.scale.set(splatconfig.scale[0], splatconfig.scale[1], splatconfig.scale[2]);
+  renderer.setClearColor(splatconfig.backgroundColor, 1);
   renderer.setAnimationLoop(function animate(time) {
     renderer.render(scene, camera);
 console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
 
 //    butterfly.rotation.y += 0.01;
   });
+/*
+  const loader = new SplatLoader();
+loader.loadAsync(url, (event) => {
+  if (event.type === "progress") {
+    const progress = event.lengthComputable
+      ? `${((event.loaded / event.total) * 100).toFixed(2)}%`
+      : `${event.loaded} bytes`;
+    console.log(`Background download progress: ${progress}`);
+  }
+})
+.then((packedSplats) => {
+  const splatMesh = new SplatMesh({ packedSplats });
+  // Re-orient from OpenCV to OpenGL coordinates
+  splatMesh.quaternion.set(1, 0, 0, 0);
+  splatMesh.position.set(0, 0, -1);
+  splatMesh.scale.setScalar(0.5);
+  scene.add(splatMesh);
+})
+.catch((error) => {
+  console.warn(error);
+});
+
+*/
