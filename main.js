@@ -357,6 +357,8 @@ console.log("Window inner Height: ",window.innerHeight);
 console.log("Window Height: ",(window.innerHeight*window.devicePixelRatio/ppi)*0.0254);
 console.log("Window Ratio: ",window.devicePixelRatio);
 console.log("GL Width/Height: ", gl.drawingBufferWidth, gl.drawingBufferHeight);
+  const viewport = gl.getParameter(gl.VIEWPORT);
+  console.log('Viewport:', viewport); // [x, y, width, height]
 
   scene.add(butterfly);
   renderer.setClearColor(splatconfig.backgroundColor, 1)
