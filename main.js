@@ -11,8 +11,11 @@
   var videoElement;
   var solutionOptions;
   
+      console.log("Script tag 00");
         
   const ZenEst = new ZenEsti();
+
+        console.log("Script tag 01");
 
   function initMediaPipe() {
       console.log("Script loaded V67");
