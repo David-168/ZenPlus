@@ -1,6 +1,6 @@
   import * as THREE from "three";
   import { SplatMesh, SplatLoader} from "@sparkjsdev/spark";
-  import ZenEsti from "https://david-168.github.io/ZenLib/ZenLib.js";
+  import { ZenEsti} from "https://david-168.github.io/ZenLib/ZenLib.js";
 
   const scene = new THREE.Scene();
   let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
