@@ -352,8 +352,9 @@ console.log("Canvas Width/Height: ", canvas.width, canvas.height);
   console.log('Viewport:', viewport); // [x, y, width, height]
 
     // Progress bar elements
-  const bar = document.getElementById('progress-bar');
-  const text = document.getElementById('progress-text');
+const bar = document.getElementById("progress-bar");
+const text = document.getElementById("progress-text");
+
 
 
 ///////  setupConfig(butterfly,splatconfig);
@@ -366,8 +367,8 @@ loader.loadAsync(splatconfig.scene , (event) => {
       : `${event.loaded} bytes`;
     console.log(`Background download progress: ${progress}`);
       const percent = (event.loaded  / event.total) * 100;
-                bar.style.width = percent + '%';
-      text.textContent = Math.floor(percent) + '%';
+             bar.style.width = percent + "%";
+            text.textContent = Math.floor(percent) + "%";
 
   }
 })
