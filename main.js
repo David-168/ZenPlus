@@ -373,12 +373,14 @@ loader.loadAsync(splatconfig.scene , (event) => {
   }
 })
 .then((packedSplats) => {
+        document.getElementById("progress-container").style.display = "none";
   const splatMesh = new SplatMesh({ packedSplats });
   // Re-orient from OpenCV to OpenGL coordinates
   //splatMesh.quaternion.set(1, 0, 0, 0);
   //splatMesh.position.set(0, 0, -1);
   //splatMesh.scale.setScalar(0.5);
   //scene.add(splatMesh);
+
   setupConfig(splatMesh,splatconfig);
 })
 .catch((error) => {
