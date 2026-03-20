@@ -368,7 +368,7 @@ loader.loadAsync(splatconfig.scene , (event) => {
     console.log(`Background download progress: ${progress}`);
       const percent = (event.loaded  / event.total) * 100;
              bar.style.width = percent + "%";
-            text.textContent = Math.floor(percent) + "%";
+            text.textContent ="Loading..."+ Math.floor(percent) + "%";
 
   }
 })
