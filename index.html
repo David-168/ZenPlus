@@ -63,7 +63,13 @@
 <script> console.log("Tag 02"); </script>  
 
 <script type="module">
-    import * as ZenLib from "https://david-168.github.io/ZenLib/ZenLib.min.js";
+import ZenLib from "https://david-168.github.io/ZenLib/ZenLib.min.js";
+
+// Access ZenEsti from the default export object
+console.log(ZenLib);  // See the structure of the module
+const ZenEsti = ZenLib.ZenEsti;  // Access ZenEsti function or object
+
+//    import * as ZenLib from "https://david-168.github.io/ZenLib/ZenLib.min.js";
     console.log("Tag 03");
 //    const minifiedModule = require('https://david-168.github.io/ZenLib/ZenLib.min.js');
 //    const minifiedModule = require('https://david-168.github.io/ZenLib/ZenLib2.js');
